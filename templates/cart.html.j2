@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+    <ul>
+        {% for item_id, quantity in cart.items %}
+            <li>{{ items|get_by_id:item_id }} - Quantity: {{ quantity }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+    <form action="{% url 'place_order' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Place Order</button>
+    </form>
+    <form action="{% url 'clear_cart' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Clear Cart</button>
+    </form>
+</body>
+</html>

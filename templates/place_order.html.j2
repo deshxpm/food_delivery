@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Order</title>
+</head>
+<body>
+    <h1>Place Your Order at {{ restaurant.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for item in menu_items %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="items" value="{{ item.id }}">
+                        {{ item.name }} - ${{ item.price }}
+                    </label>
+                    <input type="number" name="quantity_{{ item.id }}" min="0" value="0">
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>

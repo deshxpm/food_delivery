@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Process Payment</title>
+</head>
+<body>
+    <h1>Process Payment</h1>
+    <p>Total Amount: ${{ order.total_amount }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method" id="payment_method">
+            <option value="Credit Card">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <!-- Add other payment methods as needed -->
+        </select><br>
+        <button type="submit">Confirm Payment</button>
+    </form>
+</body>
+</html>
